@@ -1,0 +1,86 @@
+.root {
+  width: 100%;
+  height: 2000px;
+  margin: 0 auto;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  background-color: #000;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+}
+
+.header {
+  max-width: 880px;
+  margin: 0 auto;
+  padding-top: 45px;
+  min-height: 73px;
+  border-bottom: 1px solid #545454;
+  margin-bottom: 40px;
+}
+
+.profile {
+  max-width: 880px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.profile__avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-right: 30px;
+}
+
+.profile__profile-info {
+  max-width: 336px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 244px 0 0;
+}
+
+.profile__profile-name {
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0 19px 10px 0;
+}
+
+.profile__edit-profile-info {
+  width: 24px;
+  height: 24px;
+  background-color: black;
+  border: 1px solid white;
+  background-image: url(./images/profile-edit-profile-info.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.profile__edit-profile-info {
+  width: 24px;
+  height: 24px;
+}
+
+.profile__profile-description {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.profile__add-mesto {
+  width: 150px;
+  height: 50px;
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 2px;
+  background-image: url(./images/profile-add-mesto.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0;
+}
+
