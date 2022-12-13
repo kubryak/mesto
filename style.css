@@ -136,17 +136,24 @@
   background-image: url(./images/profile-edit-profile-info.svg);
   background-repeat: no-repeat;
   background-position: center;
+  opacity: 1;
+  transition: opacity .3s linear;
+  cursor: pointer;
+}
+
+.profile__edit-profile-info:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 880px) {
-  .profile__edit-profile-info  {
+  .profile__edit-profile-info {
     width: 18px;
     height: 18px;
   }
 }
 
 @media screen and (max-width: 580px) {
-  .profile__edit-profile-info  {
+  .profile__edit-profile-info {
     width: 18px;
     height: 18px;
     margin-top: 7px;
@@ -180,6 +187,13 @@
   background-repeat: no-repeat;
   background-position: center;
   padding: 0;
+  opacity: 1;
+  transition: opacity .3s linear;
+  cursor: pointer;
+}
+
+.profile__add-mesto:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 580px) {
@@ -199,14 +213,14 @@
 }
 
 @media screen and (max-width: 880px) {
-  .photo-grid  {
+  .photo-grid {
     margin: 0 auto 48px;
     max-width: 581px;
   }
 }
 
 @media screen and (max-width: 580px) {
-  .photo-grid  {
+  .photo-grid {
     margin: 0 auto 48px;
     max-width: 282px;
   }
@@ -257,6 +271,13 @@
   border: none;
   background-color: white;
   background-image: url(./images/photo-grid-like-photo.svg);
+  opacity: 1;
+  transition: opacity .3s linear;
+  cursor: pointer;
+}
+
+.photo-grid__like-photo:hover {
+  opacity: 0.5;
 }
 
 .footer {
@@ -266,14 +287,14 @@
 }
 
 @media screen and (max-width: 880px) {
-  .footer  {
+  .footer {
     margin: 0 auto;
     max-width: 581px;
   }
 }
 
 @media screen and (max-width: 580px) {
-  .footer  {
+  .footer {
     margin: 0 auto;
     max-width: 282px;
   }
@@ -288,7 +309,7 @@
 }
 
 @media screen and (max-width: 580px) {
-  .footer__author  {
+  .footer__author {
     font-size: 14px;
     font-weight: 400;
     line-height: 1.2;
@@ -379,7 +400,7 @@
 }
 
 @media screen and (max-width: 580px) {
-  .popup__profile-description{
+  .popup__profile-description {
     width: 238px;
     height: 14px;
     margin: 0 auto 45px;
@@ -395,10 +416,17 @@
   background-color: #000;
   color: #fff;
   border-radius: 2px;
+  opacity: 1;
+  transition: opacity .3s linear;
+  cursor: pointer;
+}
+
+.popup__submit-profile-info:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 580px) {
-  .popup__submit-profile-info{
+  .popup__submit-profile-info {
     width: 238px;
     height: 46px;
     margin: 0 auto 25px;
@@ -418,6 +446,13 @@
   position: relative;
   bottom: calc(330px / 2 + 8px + 16px);
   left: 8px;
+  opacity: 1;
+  transition: opacity .3s linear;
+  cursor: pointer;
+}
+
+.popup__btn-close-popup:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 580px) {
@@ -429,4 +464,3 @@
     left: -20px;
   }
 }
-
