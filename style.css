@@ -66,6 +66,7 @@
     margin: 0 auto 36px;
     max-width: calc(320px - 19px * 2);
     flex-direction: column;
+    justify-content: center;
   }
 }
 
@@ -128,11 +129,11 @@
     font-size: 27px;
     font-weight: 500;
     line-height: 1.2;
-    margin: 0 10px 9px 25px;
+    margin: 0 10px 9px 0;
   }
 }
 
-.profile__edit-profile-info {
+.profile__edit-profile-info-btn {
   width: 24px;
   height: 24px;
   background-color: black;
@@ -145,19 +146,19 @@
   cursor: pointer;
 }
 
-.profile__edit-profile-info:hover {
+.profile__edit-profile-info-btn:hover {
   opacity: 0.6;
 }
 
 @media screen and (max-width: 880px) {
-  .profile__edit-profile-info {
+  .profile__edit-profile-info-btn {
     width: 18px;
     height: 18px;
   }
 }
 
 @media screen and (max-width: 580px) {
-  .profile__edit-profile-info {
+  .profile__edit-profile-info-btn {
     width: 18px;
     height: 18px;
     margin-top: 7px;
@@ -173,6 +174,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  min-width: 336px;
 }
 
 @media screen and (max-width: 580px) {
@@ -180,11 +182,13 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 1.2;
+    text-align: center;
+    min-width: 250px;
   }
 }
 
 
-.profile__add-mesto {
+.profile__add-mesto-btn {
   width: 150px;
   height: 50px;
   background-color: black;
@@ -199,12 +203,12 @@
   cursor: pointer;
 }
 
-.profile__add-mesto:hover {
+.profile__add-mesto-btn:hover {
   opacity: 0.6;
 }
 
 @media screen and (max-width: 580px) {
-  .profile__add-mesto {
+  .profile__add-mesto-btn {
     margin: 0 auto;
     width: 282px;
     height: 50px;
@@ -338,6 +342,9 @@
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup_opened {
   display: none;
 }
 
@@ -417,7 +424,7 @@
   }
 }
 
-.popup__submit-profile-info {
+.popup__submit-profile-info-btn {
   width: 364px;
   height: 50px;
   margin: 0 auto 37px;
@@ -431,19 +438,19 @@
   cursor: pointer;
 }
 
-.popup__submit-profile-info:hover {
+.popup__submit-profile-info-btn:hover {
   opacity: 0.8;
 }
 
 @media screen and (max-width: 580px) {
-  .popup__submit-profile-info {
+  .popup__submit-profile-info-btn {
     width: 238px;
     height: 46px;
     margin: 0 auto 25px;
   }
 }
 
-.popup__btn-close-popup {
+.popup__close-popup-btn {
   position: relative;
   bottom: calc(330px + 16px + 32px);
   left: calc(430px + 8px);
@@ -459,12 +466,12 @@
 
 }
 
-.popup__btn-close-popup:hover {
+.popup__close-popup-btn:hover {
   opacity: 0.6;
 }
 
 @media screen and (max-width: 580px) {
-  .popup__btn-close-popup {
+  .popup__close-popup-btn {
     width: 20px;
     height: 20px;
     background-size: 20px;

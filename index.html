@@ -20,10 +20,10 @@
         <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar">
         <div class="profile__profile-info">
           <h1 class="profile__profile-name">Жак-Ив Кусто</h1>
-          <button type="button" class="profile__edit-profile-info"></button>
+          <button type="button" class="profile__edit-profile-info-btn"></button>
           <p class="profile__profile-description">Исследователь океана</p>
         </div>
-        <button type="button" class="profile__add-mesto"></button>
+        <button type="button" class="profile__add-mesto-btn"></button>
       </section>
 
       <section class="photo-grid" aria-label="Фотографии, добавленные пользователем">
@@ -72,15 +72,15 @@
           </li>
         </ul>
       </section>
-      <section class="popup">
+      <section class="popup popup_opened">
         <article class="popup__container">
           <p class="popup__title">Редактировать профиль</p>
           <div class="popup_edit-profile-info">
-            <input type="text" class="popup__profile-name" placeholder="Жак-Ив Кусто">
-            <input type="text" class="popup__profile-description" placeholder="Исследователь океана">
-            <button type="submit" class="popup__submit-profile-info">Сохранить</button>
+            <input type="text" class="popup__profile-name" value="Жак-Ив Кусто" name="name">
+            <input type="text" class="popup__profile-description" value="Исследователь океана" name="description">
+            <button type="submit" class="popup__submit-profile-info-btn">Сохранить</button>
           </div>
-          <button type="button" class="popup__btn-close-popup"></button>
+          <button type="button" class="popup__close-popup-btn"></button>
         </article>
       </section>
       <footer class="footer">
@@ -88,6 +88,7 @@
       </footer>
     </main>
   </div>
+  <script src="./script.js"></script>
 </body>
 
 </html>
