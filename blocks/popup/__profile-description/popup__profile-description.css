@@ -1,0 +1,16 @@
+.popup__profile-description {
+    width: 358px;
+    height: 27px;
+    margin: 0 auto 48px;
+    padding: 0;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  @media screen and (max-width: 580px) {
+    .popup__profile-description {
+      width: 238px;
+      height: 14px;
+      margin: 0 auto 45px;
+    }
+  }

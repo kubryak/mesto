@@ -1,0 +1,25 @@
+.popup__submit-profile-info-btn {
+    width: 364px;
+    height: 50px;
+    margin: 0 auto 37px;
+    padding: 0;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    border-radius: 2px;
+    opacity: 1;
+    transition: opacity .3s linear;
+    cursor: pointer;
+  }
+
+  .popup__submit-profile-info-btn:hover {
+    opacity: 0.8;
+  }
+
+  @media screen and (max-width: 580px) {
+    .popup__submit-profile-info-btn {
+      width: 238px;
+      height: 46px;
+      margin: 0 auto 25px;
+    }
+  }
