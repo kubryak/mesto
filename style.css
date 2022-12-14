@@ -103,10 +103,14 @@
 }
 
 .profile__profile-name {
+  max-width: 293px;
   font-size: 42px;
   font-weight: 500;
   line-height: 1.15;
   margin: 0 19px 10px 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 880px) {
@@ -166,6 +170,9 @@
   font-weight: 400;
   line-height: 1.2;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 580px) {
@@ -280,6 +287,10 @@
   opacity: 0.5;
 }
 
+.photo-grid__like-photo:active {
+  background-image: url(./images/photo-grid-like-photo-active.svg);
+}
+
 .footer {
   max-width: 880px;
   margin: 0 auto;
@@ -327,7 +338,7 @@
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  /* display: none; */
+  display: none;
 }
 
 .popup__container {
