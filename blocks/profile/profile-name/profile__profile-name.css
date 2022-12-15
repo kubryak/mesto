@@ -25,5 +25,7 @@
       font-weight: 500;
       line-height: 1.2;
       margin: 0 10px 9px 0;
+      min-width: 100px;
+      max-width: 189px;
     }
   }

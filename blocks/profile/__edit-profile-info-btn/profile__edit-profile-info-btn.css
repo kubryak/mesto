@@ -9,6 +9,7 @@
     opacity: 1;
     transition: opacity .3s linear;
     cursor: pointer;
+    align-items: center;
   }
 
   .profile__edit-profile-info-btn:hover {
@@ -26,6 +27,5 @@
     .profile__edit-profile-info-btn {
       width: 18px;
       height: 18px;
-      margin-top: 7px;
-    }
+     }
   }
