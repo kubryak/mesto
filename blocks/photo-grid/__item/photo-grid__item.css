@@ -1,6 +1,7 @@
 .photo-grid__item {
     display: block;
     max-width: 100%;
+    min-height: 361px;
     width: 100%;
     border-radius: 10px 10px 0px 0px;
   }
