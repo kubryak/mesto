@@ -30,7 +30,7 @@
             <img src="./images/photo-grid-karachaevsk.jpg" alt="Карачаевск" class="photo-grid__item">
             <div class="photo-grid__description">
               <h2 class="photo-grid__title">Карачаевск</h2>
-              <button type="button" class="photo-grid__like-photo"></button>
+              <button type="button" class="photo-grid__like-photo photo-grid__like-photo_active"></button>
             </div>
           </li>
           <li class="photo-grid__list-item">
@@ -75,8 +75,10 @@
       <div class="popup__container">
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="popup__edit-profile-info" name="profile-info">
-          <input type="text" class="popup__profile popup__profile_name" value="Жак-Ив Кусто" name="name" placeholder="Введите имя">
-          <input type="text" class="popup__profile popup__profile_description" value="Исследователь океана" name="description" placeholder="Введите описание">
+          <input type="text" class="popup__profile popup__profile_name" value="Жак-Ив Кусто" name="name"
+            placeholder="Введите имя">
+          <input type="text" class="popup__profile popup__profile_description" value="Исследователь океана"
+            name="description" placeholder="Введите описание">
           <button type="submit" class="popup__submit-profile-info-btn">Сохранить</button>
         </form>
         <button type="button" class="popup__close-popup-btn"></button>
