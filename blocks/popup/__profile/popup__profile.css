@@ -1,0 +1,10 @@
+.popup__profile {
+  width: 100%;
+  padding-bottom: 8px;
+  border: none;
+  font-size: 14;
+  font-weight: 400;
+  line-height: 1.2;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+}

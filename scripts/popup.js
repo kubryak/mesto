@@ -21,8 +21,8 @@ buttonEditProfile.addEventListener('click', popupEdit);
 buttonCloseEditProfile.addEventListener('click', popupEdit);
 
 
-let popupName = root.querySelector('.popup__profile-name');
-let popupDescription = root.querySelector('.popup__profile-description');
+let popupName = root.querySelector('.popup__profile_name');
+let popupDescription = root.querySelector('.popup__profile_description');
 let buttonSaveProfile = root.querySelector('.popup__submit-profile-info-btn');
 
 function popupSave(e) {

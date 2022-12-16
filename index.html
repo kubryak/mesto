@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
-  <title>mesto</title>
+  <title>Место</title>
 </head>
 
 <body>
   <div class="root">
     <header class="header">
-      <img src="./images/logo.svg" alt="Логотип" class="logo header__logo">
+      <img src="./images/logo.svg" alt="Логотип" class="header__logo">
     </header>
     <main class="content">
       <section class="profile">
@@ -71,19 +71,19 @@
         </ul>
       </section>
     </main>
-    <section class="popup popup_opened">
+    <section class="popup">
       <div class="popup__container">
-        <p class="popup__title">Редактировать профиль</p>
-        <form class="popup__edit-profile-info">
-          <input type="text" class="popup__profile-name" value="Жак-Ив Кусто" name="name">
-          <input type="text" class="popup__profile-description" value="Исследователь океана" name="description">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <form class="popup__edit-profile-info" name="profile-info">
+          <input type="text" class="popup__profile popup__profile_name" value="Жак-Ив Кусто" name="name" placeholder="Введите имя">
+          <input type="text" class="popup__profile popup__profile_description" value="Исследователь океана" name="description" placeholder="Введите описание">
           <button type="submit" class="popup__submit-profile-info-btn">Сохранить</button>
         </form>
         <button type="button" class="popup__close-popup-btn"></button>
       </div>
     </section>
     <footer class="footer">
-      <p class="footer__author">© 2022. kubryak</p>
+      <p class="footer__author">&copy 2022. kubryak</p>
     </footer>
   </div>
   <script src="./scripts/popup.js"></script>
