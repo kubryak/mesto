@@ -40,4 +40,4 @@ popup.addEventListener('keydown', function (event) {
 });
 
 
-buttonSaveProfile.addEventListener('click', popupSave)
+buttonSaveProfile.addEventListener('submit', popupSave)
