@@ -6,7 +6,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width: 300px;
+  min-width: 300px;
   margin-top: 10px;
 }
 
@@ -20,6 +20,6 @@
   .profile__profile-description {
     font-size: 14px;
     text-align: center;
-    max-width: 282px;
+    min-width: 282px;
   }
 }
