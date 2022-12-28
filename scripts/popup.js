@@ -1,5 +1,4 @@
 let root = document.querySelector('.root');
-let popup = root.querySelector('.popup');
 let popupProfile = root.querySelector('.popup_type_profile');
 let buttonEditProfile = root.querySelector('.profile__edit-profile-info-btn');
 let buttonCloseEditProfile = popupProfile.querySelector('.popup__close-popup-btn');
@@ -24,7 +23,7 @@ buttonCloseEditProfile.addEventListener('click', popupEdit);
 
 
 let popupCard = root.querySelector('.popup_type_card');
-let buttonCloseMesto = popupCard.querySelector('.popup__close-popup-btn');
+let buttonCloseMesto = popupCard.querySelector('.close-mesto');
 let buttonAddMesto = root.querySelector('.profile__add-mesto-btn');
 
 function popupAdd() {
