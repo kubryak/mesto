@@ -1,6 +1,6 @@
-.popup__submit-profile-info-btn {
+.popup__submit-popup-btn {
   width: 100%;
-  margin: 0 auto 37px;
+  margin: 16px auto 37px;
   padding: 14px 0 15px;
   border: none;
   background-color: #000;
@@ -12,12 +12,12 @@
   font-size: 18px;
 }
 
-.popup__submit-profile-info-btn:hover {
+.popup__submit-popup-btn:hover {
   opacity: 0.8;
 }
 
 @media screen and (max-width: 580px) {
-  .popup__submit-profile-info-btn {
+  .popup__submit-popup-btn {
     margin-bottom: 25px;
     padding-bottom: 16px;
     font-size: 14px;
