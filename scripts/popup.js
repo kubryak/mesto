@@ -40,7 +40,7 @@ buttonCloseMesto.addEventListener('click', popupAdd);
 
 
 
-let buttonSaveProfile = root.querySelector('.popup__submit-popup-btn');
+let buttonSaveProfile = popupProfile.querySelector('.popup__submit-popup-btn');
 
 function popupSave(e) {
   e.preventDefault();
