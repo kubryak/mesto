@@ -53,7 +53,7 @@ function popupSave(e) {
 }
 
 
-popup.addEventListener('submit', popupSave)
+popupProfile.addEventListener('submit', popupSave)
 
 
 const initialCards = [
