@@ -6,8 +6,8 @@ let buttonCloseEditProfile = popupProfile.querySelector('.popup__close-popup-btn
 let profileName = root.querySelector('.profile__profile-name');
 let profileDescription = root.querySelector('.profile__profile-description');
 
-let popupName = root.querySelector('.popup__profile_type_name');
-let popupDescription = root.querySelector('.popup__profile_type_description');
+let popupName = root.querySelector('.popup__input_type_name');
+let popupDescription = root.querySelector('.popup__input_type_description');
 
 function popupEdit() {
   if (popupProfile.classList.contains('popup_opened')) {
@@ -40,7 +40,7 @@ buttonCloseMesto.addEventListener('click', popupAdd);
 
 
 
-let buttonSaveProfile = root.querySelector('.popup__submit-profile-info-btn');
+let buttonSaveProfile = root.querySelector('.popup__submit-popup-btn');
 
 function popupSave(e) {
   e.preventDefault();
