@@ -1,12 +1,15 @@
 let root = document.querySelector('.root');
 let popupProfile = root.querySelector('.popup_type_profile');
+let popupImage = root.querySelector('.popup_type_image');
 let buttonEditProfile = root.querySelector('.profile__edit-profile-info-btn');
-let buttonCloseEditProfile = popupProfile.querySelector('.popup__close-popup-btn');
+let buttonCloseEditProfile = popupProfile.querySelector('.popup__close-btn');
 let profileName = root.querySelector('.profile__profile-name');
 let profileDescription = root.querySelector('.profile__profile-description');
 
 let popupName = root.querySelector('.popup__input_type_name');
 let popupDescription = root.querySelector('.popup__input_type_description');
+
+const photoGridList = root.querySelector('.photo-grid__list');
 
 // Открытие попапа редактирования профиля
 
@@ -28,7 +31,7 @@ buttonCloseEditProfile.addEventListener('click', popupEdit);
 // Открытие попапа добавления карточки
 
 let popupCard = root.querySelector('.popup_type_card');
-let buttonCloseMesto = popupCard.querySelector('.close-mesto');
+let buttonCloseMesto = popupCard.querySelector('.popup__close-btn_type_mesto');
 let buttonAddMesto = root.querySelector('.profile__add-mesto-btn');
 
 function popupAdd() {
@@ -42,7 +45,31 @@ function popupAdd() {
 buttonAddMesto.addEventListener('click', popupAdd);
 buttonCloseMesto.addEventListener('click', popupAdd);
 
-//
+// Открытие попапа с увеличенной картинкой
+
+const popupFigure = root.querySelector('.popup__figure');
+
+let srcImage = photoGridList.querySelector('.photo-grid__item');
+let descriptionImage = photoGridList.querySelector('.photo-grid__title');
+
+let popupSrcImage = popupFigure.querySelector('.popup__image');
+let popupDescriptionImage = popupFigure.querySelector('.popup__image-description');
+
+
+function popupBigImage() {
+  if (popupImage.classList.contains('popup_opened')) {
+    popupImage.classList.remove('popup_opened');
+  } else {
+    popupImage.classList.add('popup_opened');
+  }
+}
+
+// popupName.value = profileName.textContent;
+// popupDescription.value = profileDescription.textContent;
+
+
+let buttonCloseBigImage = popupFigure.querySelector('.popup__close-btn_type_image');
+buttonCloseBigImage.addEventListener('click', popupBigImage);
 
 // Сохранение попапов
 
@@ -95,12 +122,12 @@ const initialCards = [
 
 // Добавление 6 карточек
 
-const photoGridList = root.querySelector('.photo-grid__list');
+
 const photoGridTemplate = document.querySelector('#photogrid').content;
 
 initialCards.forEach(function (element) {
 
-const photoGridListItem = photoGridTemplate.querySelector('.photo-grid__list-item').cloneNode(true);
+  const photoGridListItem = photoGridTemplate.querySelector('.photo-grid__list-item').cloneNode(true);
 
   photoGridListItem.querySelector('.photo-grid__item').src = element.link;
   photoGridListItem.querySelector('.photo-grid__item').alt = element.name;
@@ -113,7 +140,7 @@ const photoGridListItem = photoGridTemplate.querySelector('.photo-grid__list-ite
 
 // Добавление карточки
 
-function addMesto (nameValue, linkValue) {
+function addMesto(nameValue, linkValue) {
 
   const mestoElement = photoGridTemplate.querySelector('.photo-grid__list-item').cloneNode(true);
 
@@ -126,13 +153,14 @@ function addMesto (nameValue, linkValue) {
 
   photoGridList.querySelector('.photo-grid__delete-photo').addEventListener('click', deletePhoto);
   photoGridList.querySelector('.photo-grid__like-photo').addEventListener('click', likePhoto);
+  photoGridList.querySelector('.photo-grid__item').addEventListener('click', popupBigImage);
 };
 
 // Сохранение новой карточки
 
 const buttonSaveMesto = popupCard.querySelector('.popup__submit-popup-btn');
 
-buttonSaveMesto.addEventListener('click', function(e) {
+buttonSaveMesto.addEventListener('click', function (e) {
   const name = popupCard.querySelector('.popup__input_type_img-name');
   const link = popupCard.querySelector('.popup__input_type_img-link');
 
@@ -147,7 +175,7 @@ buttonSaveMesto.addEventListener('click', function(e) {
 
 // Добавление лайка на карточку
 
-function likePhoto (evt) {
+function likePhoto(evt) {
   console.log('check');
   evt.preventDefault();
   evt.target.classList.toggle('photo-grid__like-photo_active');
@@ -161,7 +189,7 @@ likeButton.forEach((evt) => {
 
 // Удаление карточки
 
-function deletePhoto (evt) {
+function deletePhoto(evt) {
   console.log('check');
   evt.preventDefault();
   evt.target.closest('.photo-grid__list-item').remove();
@@ -174,5 +202,12 @@ check.forEach((evt) => {
 });
 
 
+////////////////////////////////////////////////////
 
+const gridItem = photoGridList.querySelectorAll('.photo-grid__item');
+
+gridItem.forEach((evt) => {
+  evt.addEventListener('click', popupBigImage);
+
+});
 
