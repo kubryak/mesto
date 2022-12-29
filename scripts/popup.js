@@ -195,9 +195,9 @@ function deletePhoto(evt) {
   evt.target.closest('.photo-grid__list-item').remove();
 };
 
-const check = photoGridList.querySelectorAll('.photo-grid__delete-photo');
+const deleteButton = photoGridList.querySelectorAll('.photo-grid__delete-photo');
 
-check.forEach((evt) => {
+deleteButton.forEach((evt) => {
   evt.addEventListener('click', deletePhoto);
 });
 
