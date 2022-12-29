@@ -120,8 +120,11 @@ function addMesto (nameValue, linkValue) {
   mestoElement.querySelector('.photo-grid__item').src = linkValue;
   mestoElement.querySelector('.photo-grid__item').alt = nameValue;
   mestoElement.querySelector('.photo-grid__title').textContent = nameValue;
+  mestoElement.querySelector('.photo-grid__delete-photo')
 
   photoGridList.prepend(mestoElement);
+
+  photoGridList.querySelector('.photo-grid__delete-photo').addEventListener('click', deletePhoto);
 };
 
 // Сохранение новой карточки
@@ -160,6 +163,16 @@ likeButton.forEach((button) => {
 // });
 
 //
+
+// Удаление карточки
+
+function deletePhoto (evt) {
+  console.log('check');
+  evt.preventDefault();
+  evt.target.closest('.photo-grid__list-item').remove();
+};
+
+
 
 
 

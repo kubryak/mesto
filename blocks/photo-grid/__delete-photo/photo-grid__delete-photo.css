@@ -11,4 +11,10 @@
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.3s linear;
+}
+
+.photo-grid__delete-photo:hover {
+  opacity: 0.6;
 }
