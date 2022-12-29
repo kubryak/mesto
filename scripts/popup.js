@@ -8,6 +8,8 @@ let profileDescription = root.querySelector('.profile__profile-description');
 let popupName = root.querySelector('.popup__input_type_name');
 let popupDescription = root.querySelector('.popup__input_type_description');
 
+// Открытие попапа редактирования профиля
+
 function popupEdit() {
   if (popupProfile.classList.contains('popup_opened')) {
     popupProfile.classList.remove('popup_opened');
@@ -21,6 +23,9 @@ function popupEdit() {
 buttonEditProfile.addEventListener('click', popupEdit);
 buttonCloseEditProfile.addEventListener('click', popupEdit);
 
+//
+
+// Открытие попапа добавления карточки
 
 let popupCard = root.querySelector('.popup_type_card');
 let buttonCloseMesto = popupCard.querySelector('.close-mesto');
@@ -37,7 +42,9 @@ function popupAdd() {
 buttonAddMesto.addEventListener('click', popupAdd);
 buttonCloseMesto.addEventListener('click', popupAdd);
 
+//
 
+// Сохранение попапов
 
 let buttonSaveProfile = popupProfile.querySelector('.popup__submit-popup-btn');
 
@@ -54,6 +61,9 @@ function popupSave(e) {
 
 popupProfile.addEventListener('submit', popupSave)
 
+//
+
+// Массив с 6-ю карточками
 
 const initialCards = [
   {
@@ -82,6 +92,10 @@ const initialCards = [
   }
 ];
 
+//
+
+// Добавление 6 карточек
+
 const photoGridList = root.querySelector('.photo-grid__list');
 const photoGridTemplate = document.querySelector('#photogrid').content;
 
@@ -96,6 +110,9 @@ const photoGridListItem = photoGridTemplate.querySelector('.photo-grid__list-ite
   photoGridList.append(photoGridListItem);
 });
 
+//
+
+// Добавление карточки
 
 function addMesto (nameValue, linkValue) {
   const mestoElement = photoGridTemplate.querySelector('.photo-grid__list-item').cloneNode(true);
@@ -107,20 +124,7 @@ function addMesto (nameValue, linkValue) {
   photoGridList.prepend(mestoElement);
 };
 
-const likeButton = Array.from(photoGridList.querySelectorAll('.photo-grid__like-photo'));
-
-likeButton.forEach((button) => {
-  button.addEventListener('click', () => {
-  button.classList.toggle('photo-grid__like-photo_active');
-});
-});
-
-
-// photoGridList.querySelector('.photo-grid__like-photo').addEventListener('click', function(evt){
-//   console.log('xyu');
-//   evt.target.classList.toggle('photo-grid__like-photo_active');
-// });
-
+// Сохранение новой карточки
 
 const buttonSaveMesto = popupCard.querySelector('.popup__submit-popup-btn');
 
@@ -136,3 +140,26 @@ buttonSaveMesto.addEventListener('click', function(e) {
 
   popupAdd();
 });
+
+//
+
+// Добавление лайка на карточку
+
+const likeButton = Array.from(photoGridList.querySelectorAll('.photo-grid__like-photo'));
+
+likeButton.forEach((button) => {
+  button.addEventListener('click', () => {
+  button.classList.toggle('photo-grid__like-photo_active');
+});
+});
+
+
+
+// photoGridList.querySelector('.photo-grid__like-photo').addEventListener('click', function(evt){
+//   evt.target.classList.toggle('photo-grid__like-photo_active');
+// });
+
+//
+
+
+
