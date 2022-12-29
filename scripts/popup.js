@@ -105,7 +105,22 @@ function addMesto (nameValue, linkValue) {
   mestoElement.querySelector('.photo-grid__title').textContent = nameValue;
 
   photoGridList.prepend(mestoElement);
-}
+};
+
+const likeButton = Array.from(photoGridList.querySelectorAll('.photo-grid__like-photo'));
+
+likeButton.forEach((button) => {
+  button.addEventListener('click', () => {
+  button.classList.toggle('photo-grid__like-photo_active');
+});
+});
+
+
+// photoGridList.querySelector('.photo-grid__like-photo').addEventListener('click', function(evt){
+//   console.log('xyu');
+//   evt.target.classList.toggle('photo-grid__like-photo_active');
+// });
+
 
 const buttonSaveMesto = popupCard.querySelector('.popup__submit-popup-btn');
 
