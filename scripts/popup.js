@@ -61,6 +61,7 @@ function popupBigImage() {
     popupImage.classList.remove('popup_opened');
   } else {
     popupImage.classList.add('popup_opened');
+    popupDescriptionImage.textContent = descriptionImage.textContent;
   }
 }
 
