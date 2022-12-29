@@ -83,9 +83,10 @@ const initialCards = [
 ];
 
 const photoGridList = root.querySelector('.photo-grid__list');
+const photoGridTemplate = document.querySelector('#photogrid').content;
 
 initialCards.forEach(function (element) {
-const photoGridTemplate = document.querySelector('#photogrid').content;
+
 const photoGridListItem = photoGridTemplate.querySelector('.photo-grid__list-item').cloneNode(true);
 
   photoGridListItem.querySelector('.photo-grid__item').src = element.link;
@@ -96,5 +97,27 @@ const photoGridListItem = photoGridTemplate.querySelector('.photo-grid__list-ite
 });
 
 
+function addMesto (nameValue, linkValue) {
+  const mestoElement = photoGridTemplate.querySelector('.photo-grid__list-item').cloneNode(true);
 
+  mestoElement.querySelector('.photo-grid__item').src = linkValue;
+  mestoElement.querySelector('.photo-grid__item').alt = nameValue;
+  mestoElement.querySelector('.photo-grid__title').textContent = nameValue;
 
+  photoGridList.prepend(mestoElement);
+}
+
+const buttonSaveMesto = popupCard.querySelector('.popup__submit-popup-btn');
+
+buttonSaveMesto.addEventListener('click', function(e) {
+  const name = popupCard.querySelector('.popup__input_type_img-name');
+  const link = popupCard.querySelector('.popup__input_type_img-link');
+
+  e.preventDefault();
+
+  addMesto(name.value, link.value);
+  name.value = '';
+  link.value = '';
+
+  popupAdd();
+});
