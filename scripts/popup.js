@@ -61,7 +61,6 @@ function popupSave(e) {
 
 popupProfile.addEventListener('submit', popupSave)
 
-//
 
 // Массив с 6-ю карточками
 
@@ -92,7 +91,7 @@ const initialCards = [
   }
 ];
 
-//
+
 
 // Добавление 6 карточек
 
@@ -110,11 +109,12 @@ const photoGridListItem = photoGridTemplate.querySelector('.photo-grid__list-ite
   photoGridList.append(photoGridListItem);
 });
 
-//
+
 
 // Добавление карточки
 
 function addMesto (nameValue, linkValue) {
+
   const mestoElement = photoGridTemplate.querySelector('.photo-grid__list-item').cloneNode(true);
 
   mestoElement.querySelector('.photo-grid__item').src = linkValue;
@@ -125,6 +125,7 @@ function addMesto (nameValue, linkValue) {
   photoGridList.prepend(mestoElement);
 
   photoGridList.querySelector('.photo-grid__delete-photo').addEventListener('click', deletePhoto);
+  photoGridList.querySelector('.photo-grid__like-photo').addEventListener('click', likePhoto);
 };
 
 // Сохранение новой карточки
@@ -144,25 +145,19 @@ buttonSaveMesto.addEventListener('click', function(e) {
   popupAdd();
 });
 
-//
-
 // Добавление лайка на карточку
 
-const likeButton = Array.from(photoGridList.querySelectorAll('.photo-grid__like-photo'));
+function likePhoto (evt) {
+  console.log('check');
+  evt.preventDefault();
+  evt.target.classList.toggle('photo-grid__like-photo_active');
+};
 
-likeButton.forEach((button) => {
-  button.addEventListener('click', () => {
-  button.classList.toggle('photo-grid__like-photo_active');
+const likeButton = photoGridList.querySelectorAll('.photo-grid__like-photo');
+
+likeButton.forEach((evt) => {
+  evt.addEventListener('click', likePhoto);
 });
-});
-
-
-
-// photoGridList.querySelector('.photo-grid__like-photo').addEventListener('click', function(evt){
-//   evt.target.classList.toggle('photo-grid__like-photo_active');
-// });
-
-//
 
 // Удаление карточки
 
@@ -172,6 +167,11 @@ function deletePhoto (evt) {
   evt.target.closest('.photo-grid__list-item').remove();
 };
 
+const check = photoGridList.querySelectorAll('.photo-grid__delete-photo');
+
+check.forEach((evt) => {
+  evt.addEventListener('click', deletePhoto);
+});
 
 
 
