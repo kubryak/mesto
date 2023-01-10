@@ -45,4 +45,4 @@
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__image-description/popup__image-description.css);
 @import url(../blocks/popup/__close-btn/_type/popup__close-btn_type_image.css);
-
+@import url(../blocks/popup/__figure-container/popup__figure-container.css);

@@ -31,7 +31,7 @@
     </main>
 
 
-    <section class="popup popup_type_profile">
+    <section class="popup popup_type_profile" aria-label="Редактирование профиля">
       <div class="popup__container">
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="popup__form" name="profile-info">
@@ -46,7 +46,7 @@
     </section>
 
 
-    <section class="popup popup_type_card">
+    <section class="popup popup_type_card" aria-label="Окно для добавления новых фотографий">
       <div class="popup__container">
         <h3 class="popup__title">Новое место</h3>
         <form class="popup__form" name="add-mesto">
@@ -59,12 +59,14 @@
       </div>
     </section>
 
-    <section class="popup popup_type_image">
-      <figure class="popup__figure">
-        <img class="popup__image">
-        <figcaption class="popup__image-description"></figcaption>
+    <section class="popup popup_type_image" aria-label="Окно просмотра увеличенной картинки">
+      <div class="popup__figure-container">
+        <figure class="popup__figure">
+          <img class="popup__image" src="#" alt="#">
+          <figcaption class="popup__image-description"></figcaption>
+        </figure>
         <button type="button" class="popup__close-btn popup__close-btn_type_image"></button>
-      </figure>
+      </div>
     </section>
 
 
