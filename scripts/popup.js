@@ -11,49 +11,67 @@ let popupDescription = root.querySelector('.popup__input_type_description');
 
 const photoGridList = root.querySelector('.photo-grid__list');
 
-// Открытие попапа редактирования профиля
+let popupCard = root.querySelector('.popup_type_card');
+let buttonCloseMesto = popupCard.querySelector('.popup__close-btn_type_mesto');
+let buttonAddMesto = root.querySelector('.profile__add-mesto-btn');
 
-function popupEdit() {
-  if (popupProfile.classList.contains('popup_opened')) {
-    popupProfile.classList.remove('popup_opened');
-  } else {
-    popupProfile.classList.add('popup_opened');
+const popup = root.querySelectorAll('.popup');
+
+
+// Открытие попапа в зависимости от кнопки
+
+function popupOpen({element}) {
+  popup.forEach((item) => {
+  if (item.classList === element.classList) {
+    item.classList.add('popup_opened');
+    console.log('add')
     popupName.value = profileName.textContent;
     popupDescription.value = profileDescription.textContent;
+  } else {
+    item.classList.remove('popup_opened');
+    console.log('remove')
   }
-}
+})
+};
 
-buttonEditProfile.addEventListener('click', popupEdit);
-buttonCloseEditProfile.addEventListener('click', popupEdit);
+// Открытие попапа профиля
+
+buttonEditProfile.addEventListener('click', function() {
+  popupOpen({element:popupProfile});
+  console.log('profileopen');
+});
 
 //
 
 // Открытие попапа добавления карточки
 
-let popupCard = root.querySelector('.popup_type_card');
-let buttonCloseMesto = popupCard.querySelector('.popup__close-btn_type_mesto');
-let buttonAddMesto = root.querySelector('.profile__add-mesto-btn');
+buttonAddMesto.addEventListener('click', function() {
+  popupOpen({element:popupCard});
+  console.log('mestoopen');
+});
 
-function popupAdd() {
-  if (popupCard.classList.contains('popup_opened')) {
-    popupCard.classList.remove('popup_opened');
-  } else {
-    popupCard.classList.add('popup_opened');
-  }
-}
+//
 
-buttonAddMesto.addEventListener('click', popupAdd);
-buttonCloseMesto.addEventListener('click', popupAdd);
+// Закрытие попапов
+
+const closePopupButton = root.querySelectorAll('.popup__close-btn');
+
+closePopupButton.forEach ((elem) => {
+  elem.addEventListener('click', () => {popupOpen({element: popup})});
+});
+
+//
+
 
 // Открытие попапа с увеличенной картинкой
 
-const popupFigure = root.querySelector('.popup__figure');
+// const popupFigure = root.querySelector('.popup__figure');
 
-let srcImage = photoGridList.querySelector('.photo-grid__item');
-let descriptionImage = photoGridList.querySelector('.photo-grid__title');
+// let srcImage = photoGridList.querySelector('.photo-grid__item');
+// let descriptionImage = photoGridList.querySelector('.photo-grid__title');
 
-let popupSrcImage = popupFigure.querySelector('.popup__image');
-let popupDescriptionImage = popupFigure.querySelector('.popup__image-description');
+// let popupSrcImage = popupFigure.querySelector('.popup__image');
+// let popupDescriptionImage = popupFigure.querySelector('.popup__image-description');
 
 
 // function popupBigImage() {
@@ -61,7 +79,6 @@ let popupDescriptionImage = popupFigure.querySelector('.popup__image-description
 //     popupImage.classList.remove('popup_opened');
 //   } else {
 //     popupImage.classList.add('popup_opened');
-//     popupDescriptionImage.textContent = descriptionImage.textContent;
 //   }
 // }
 
@@ -80,9 +97,9 @@ function popupSave(e) {
   e.preventDefault();
   profileName.textContent = `${popupName.value}`;
   profileDescription.textContent = `${popupDescription.value}`;
-  popupEdit();
+  popupOpen({element: popup});
   if (e.keyCode === 13) {
-    popupEdit()
+    popupOpen({element: popup});
   }
 }
 
@@ -160,7 +177,7 @@ function addMesto(e) {
   name.value = '';
   link.value = '';
 
-  popupAdd();
+  popupOpen({element: popup});
 
 };
 
@@ -200,7 +217,7 @@ deleteButton.forEach((evt) => {
 // const gridItem = photoGridList.querySelectorAll('.photo-grid__item');
 
 // gridItem.forEach((evt) => {
-//   evt.addEventListener('click', popupBigImage);
+// evt.addEventListener('click', popupBigImage);
 
 // });
 
