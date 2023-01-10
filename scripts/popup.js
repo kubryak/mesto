@@ -56,21 +56,21 @@ let popupSrcImage = popupFigure.querySelector('.popup__image');
 let popupDescriptionImage = popupFigure.querySelector('.popup__image-description');
 
 
-function popupBigImage() {
-  if (popupImage.classList.contains('popup_opened')) {
-    popupImage.classList.remove('popup_opened');
-  } else {
-    popupImage.classList.add('popup_opened');
-    popupDescriptionImage.textContent = descriptionImage.textContent;
-  }
-}
+// function popupBigImage() {
+//   if (popupImage.classList.contains('popup_opened')) {
+//     popupImage.classList.remove('popup_opened');
+//   } else {
+//     popupImage.classList.add('popup_opened');
+//     popupDescriptionImage.textContent = descriptionImage.textContent;
+//   }
+// }
 
-// popupName.value = profileName.textContent;
-// popupDescription.value = profileDescription.textContent;
+// // popupName.value = profileName.textContent;
+// // popupDescription.value = profileDescription.textContent;
 
 
-let buttonCloseBigImage = popupFigure.querySelector('.popup__close-btn_type_image');
-buttonCloseBigImage.addEventListener('click', popupBigImage);
+// let buttonCloseBigImage = popupFigure.querySelector('.popup__close-btn_type_image');
+// buttonCloseBigImage.addEventListener('click', popupBigImage);
 
 // Сохранение попапов
 
@@ -141,43 +141,36 @@ initialCards.forEach(function (element) {
 
 // Добавление карточки
 
-function addMesto(nameValue, linkValue) {
+function addMesto(e) {
+  e.preventDefault();
 
-  const mestoElement = photoGridTemplate.querySelector('.photo-grid__list-item').cloneNode(true);
-
-  mestoElement.querySelector('.photo-grid__item').src = linkValue;
-  mestoElement.querySelector('.photo-grid__item').alt = nameValue;
-  mestoElement.querySelector('.photo-grid__title').textContent = nameValue;
-  mestoElement.querySelector('.photo-grid__delete-photo')
-
-  photoGridList.prepend(mestoElement);
-
-  photoGridList.querySelector('.photo-grid__delete-photo').addEventListener('click', deletePhoto);
-  photoGridList.querySelector('.photo-grid__like-photo').addEventListener('click', likePhoto);
-  photoGridList.querySelector('.photo-grid__item').addEventListener('click', popupBigImage);
-};
-
-// Сохранение новой карточки
-
-const buttonSaveMesto = popupCard.querySelector('.popup__submit-popup-btn');
-
-buttonSaveMesto.addEventListener('click', function (e) {
   const name = popupCard.querySelector('.popup__input_type_img-name');
   const link = popupCard.querySelector('.popup__input_type_img-link');
 
-  e.preventDefault();
+  const mestoElement = photoGridTemplate.querySelector('.photo-grid__list-item').cloneNode(true);
 
-  addMesto(name.value, link.value);
+  mestoElement.querySelector('.photo-grid__item').src = `${link.value}`;
+  mestoElement.querySelector('.photo-grid__item').alt = `${name.value}`;
+  mestoElement.querySelector('.photo-grid__title').textContent = `${name.value}`;
+
+  photoGridList.prepend(mestoElement);
+  photoGridList.querySelector('.photo-grid__delete-photo').addEventListener('click', deletePhoto);
+  photoGridList.querySelector('.photo-grid__like-photo').addEventListener('click', likePhoto);
+
   name.value = '';
   link.value = '';
 
   popupAdd();
-});
+
+};
+
+// Сохранение новой карточки
+
+popupCard.addEventListener('submit', addMesto);
 
 // Добавление лайка на карточку
 
 function likePhoto(evt) {
-  console.log('check');
   evt.preventDefault();
   evt.target.classList.toggle('photo-grid__like-photo_active');
 };
@@ -191,7 +184,6 @@ likeButton.forEach((evt) => {
 // Удаление карточки
 
 function deletePhoto(evt) {
-  console.log('check');
   evt.preventDefault();
   evt.target.closest('.photo-grid__list-item').remove();
 };
@@ -205,10 +197,10 @@ deleteButton.forEach((evt) => {
 
 ////////////////////////////////////////////////////
 
-const gridItem = photoGridList.querySelectorAll('.photo-grid__item');
+// const gridItem = photoGridList.querySelectorAll('.photo-grid__item');
 
-gridItem.forEach((evt) => {
-  evt.addEventListener('click', popupBigImage);
+// gridItem.forEach((evt) => {
+//   evt.addEventListener('click', popupBigImage);
 
-});
+// });
 
