@@ -1,3 +1,4 @@
 .popup__input-error {
+  position: relative;
   min-height: 30px;
 }
