@@ -41,9 +41,11 @@ function closePopup(item) {
 
   inputs.forEach(element => {
     element.classList.remove('popup__input_type_error');
+    element.textContent = '';
   })
 
   inputsError.forEach(element => {
+    element.textContent = '';
     element.classList.remove('popup__input-error_active');
   })
 };
@@ -273,8 +275,10 @@ function hasInvalidInput (inputList) {
 
 function toggleButtonState(inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {
+    buttonElement.disabled = true;
     buttonElement.classList.add('popup__submit-popup-btn_disabled');
   } else {
+    buttonElement.disabled = false;
     buttonElement.classList.remove('popup__submit-popup-btn_disabled');
   };
 };
