@@ -39,6 +39,8 @@ function closePopup(item) {
 
   item.classList.remove('popup_opened');
 
+  document.removeEventListener('keydown', closePopupByEsc);
+
   inputs.forEach(element => {
     element.classList.remove('popup__input_type_error');
     element.textContent = '';
@@ -59,12 +61,37 @@ buttonsClosePopup.forEach((elem) => {
 
 //
 
+// Закрытие попапов по esc
+
+function closePopupByEsc (evt) {
+  if (evt.key === 'Escape' || evt.key === 'Esc' || evt.keyCode === '27') {
+    const openedPopup = root.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  };
+};
+
+//
+
+// Закрытие попапа кликом по оверлею
+
+
+
+
 // Открытие попапа профиля
 
 buttonEditProfile.addEventListener('click', function () {
   popupName.value = profileName.textContent;
   popupDescription.value = profileDescription.textContent;
+  document.addEventListener('keydown', closePopupByEsc);
   openPopup(popupProfile);
+
+  document.addEventListener('click', function(event) {
+    if (!event.target.closest('.popup__container')) {
+      closePopup(popupProfile);
+    }
+  },
+    true
+  );
 });
 
 //
@@ -74,8 +101,20 @@ buttonEditProfile.addEventListener('click', function () {
 buttonAddMesto.addEventListener('click', function () {
   cardName.value = '';
   cardLink.value = '';
+  document.addEventListener('keydown', closePopupByEsc);
   openPopup(popupCard);
+
+  document.addEventListener('click', function(event) {
+    if (!event.target.closest('.popup__container')) {
+      closePopup(popupCard);
+    }
+  },
+    true
+  );
 });
+
+
+
 
 //
 
@@ -169,10 +208,18 @@ function createCard(item) {
     popupSrcImage.alt = descriptionImage.textContent;
     popupDescriptionImage.textContent = descriptionImage.textContent;
     openPopup(popupImage);
+    document.addEventListener('keydown', closePopupByEsc);
+
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.popup__figure-container')) {
+        closePopup(popupImage);
+      }
+    },
+      true
+    );
   }
 
   image.addEventListener('click', openBigImage);
-
   //
 
   return mestoElement;
