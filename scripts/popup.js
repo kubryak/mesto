@@ -27,6 +27,7 @@ const popupDescriptionImage = popupImage.querySelector('.popup__image-descriptio
 
 function openPopup(item) {
   item.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupByEsc);
 };
 
 //
@@ -34,36 +35,16 @@ function openPopup(item) {
 // Закрытие попапов
 
 function closePopup(item) {
-  const inputs = item.querySelectorAll('.popup__input');
-  const inputsError = item.querySelectorAll('.popup__input-error');
-
   item.classList.remove('popup_opened');
 
   document.removeEventListener('keydown', closePopupByEsc);
-
-  inputs.forEach(element => {
-    element.classList.remove('popup__input_type_error');
-    element.textContent = '';
-  })
-
-  inputsError.forEach(element => {
-    element.textContent = '';
-    element.classList.remove('popup__input-error_active');
-  })
 };
-
-const buttonsClosePopup = root.querySelectorAll('.popup__close-btn');
-
-buttonsClosePopup.forEach((elem) => {
-  const popup = elem.closest('.popup');
-  elem.addEventListener('click', () => closePopup(popup));
-});
 
 //
 
 // Закрытие попапов по esc
 
-function closePopupByEsc (evt) {
+function closePopupByEsc(evt) {
   if (evt.key === 'Escape' || evt.key === 'Esc' || evt.keyCode === '27') {
     const openedPopup = root.querySelector('.popup_opened');
     closePopup(openedPopup);
@@ -72,22 +53,41 @@ function closePopupByEsc (evt) {
 
 //
 
+// Закрытие попапов кликом по оверлею или крестику
+
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup)
+    }
+    if (evt.target.classList.contains('popup__close-btn')) {
+      closePopup(popup)
+    }
+  });
+});
+
+//
 
 // Открытие попапа профиля
 
 buttonEditProfile.addEventListener('click', function () {
   popupName.value = profileName.textContent;
   popupDescription.value = profileDescription.textContent;
-  document.addEventListener('keydown', closePopupByEsc);
-  openPopup(popupProfile);
 
-  document.addEventListener('click', function(event) {
-    if (!event.target.closest('.popup__container')) {
-      closePopup(popupProfile);
-    }
-  },
-    true
-  );
+  const inputs = popupProfile.querySelectorAll('.popup__input');
+  const inputsError = popupProfile.querySelectorAll('.popup__input-error');
+
+  inputs.forEach(element => {
+    element.classList.remove('popup__input_type_error');
+    element.textContent = '';
+  });
+
+  inputsError.forEach(element => {
+    element.textContent = '';
+    element.classList.remove('popup__input-error_active');
+  });
+
+  openPopup(popupProfile);
 });
 
 //
@@ -95,18 +95,7 @@ buttonEditProfile.addEventListener('click', function () {
 // Открытие попапа добавления карточки
 
 buttonAddMesto.addEventListener('click', function () {
-  cardName.value = '';
-  cardLink.value = '';
-  document.addEventListener('keydown', closePopupByEsc);
   openPopup(popupCard);
-
-  document.addEventListener('click', function(event) {
-    if (!event.target.closest('.popup__container')) {
-      closePopup(popupCard);
-    }
-  },
-    true
-  );
 });
 
 
@@ -116,16 +105,16 @@ buttonAddMesto.addEventListener('click', function () {
 
 const buttonSaveProfile = popupProfile.querySelector('.popup__submit-popup-btn');
 
-function savePopup(e) {
+function saveProfilePopup(e) {
   e.preventDefault();
   profileName.textContent = `${popupName.value}`;
   profileDescription.textContent = `${popupDescription.value}`;
   closePopup(popupProfile);
 };
 
-const popupFormProfile = popupProfile.querySelector('.popup__form');
+const popupFormProfile = document.forms['profile-form'];
 
-popupFormProfile.addEventListener('submit', savePopup);
+popupFormProfile.addEventListener('submit', saveProfilePopup);
 
 //
 
@@ -167,9 +156,10 @@ const photoGridTemplate = document.querySelector('#photogrid').content;
 function createCard(item) {
 
   const mestoElement = photoGridTemplate.querySelector('.photo-grid__list-item').cloneNode(true);
+  const photoGridItem = mestoElement.querySelector('.photo-grid__item');
 
-  mestoElement.querySelector('.photo-grid__item').src = item.link;
-  mestoElement.querySelector('.photo-grid__item').alt = item.name;
+  photoGridItem.src = item.link;
+  photoGridItem.alt = item.name;
   mestoElement.querySelector('.photo-grid__title').textContent = item.name;
 
   // Лайк фотографии
@@ -202,15 +192,6 @@ function createCard(item) {
     popupSrcImage.alt = descriptionImage.textContent;
     popupDescriptionImage.textContent = descriptionImage.textContent;
     openPopup(popupImage);
-    document.addEventListener('keydown', closePopupByEsc);
-
-    document.addEventListener('click', function(event) {
-      if (!event.target.closest('.popup__figure-container')) {
-        closePopup(popupImage);
-      }
-    },
-      true
-    );
   }
 
   image.addEventListener('click', openBigImage);
@@ -231,7 +212,7 @@ initialCards.forEach((item) => {
 
 // Добавление новой карточки
 
-const popupFormMesto = popupCard.querySelector('.popup__form');
+const popupFormMesto = document.forms['mesto-form'];
 
 popupFormMesto.addEventListener('submit', (e) => {
   e.preventDefault();

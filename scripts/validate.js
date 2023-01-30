@@ -1,7 +1,6 @@
 const variables = ({
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
-  fieldsetSelector: 'popup__form-set',
   submitButtonSelector: '.popup__submit-popup-btn',
   inactiveButtonClass: 'popup__submit-popup-btn_disabled',
   inputErrorClass: '.popup__input_type_error',
@@ -39,6 +38,12 @@ function setEventListeners (formElement) {
   const buttonElement = formElement.querySelector(variables.submitButtonSelector);
   toggleButtonState(inputList, buttonElement);
 
+  formElement.addEventListener('reset', () => {
+    setTimeout(() => {
+     toggleButtonState(inputList, buttonElement);
+    }, 0);
+  });
+
   inputList.forEach(inputElement => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement);
@@ -53,14 +58,9 @@ function enableValidation (variables) {
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function(e){
       e.preventDefault();
-      fieldsetList.forEach((fieldset) => {
-        setEventListeners(fieldset);
-      });
     });
-    const fieldsetList = Array.from(formElement.querySelectorAll(variables.fieldsetSelector));
-
-    setEventListeners(formElement);
-  });
+      setEventListeners(formElement, variables);
+});
 };
 
 
