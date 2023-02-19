@@ -1,6 +1,10 @@
+import {initialCards} from "./utils.js";
+import Card from "./Card.js";
+
+
 const root = document.querySelector('.root');
 const popupProfile = root.querySelector('.popup_type_profile');
-const popupImage = root.querySelector('.popup_type_image');
+export const popupImage = root.querySelector('.popup_type_image');
 const buttonEditProfile = root.querySelector('.profile__edit-profile-info-btn');
 const profileName = root.querySelector('.profile__profile-name');
 const profileDescription = root.querySelector('.profile__profile-description');
@@ -19,8 +23,8 @@ const popups = root.querySelectorAll('.popup');
 const cardName = popupCard.querySelector('.popup__input_type_img-name');
 const cardLink = popupCard.querySelector('.popup__input_type_img-link');
 
-const popupSrcImage = popupImage.querySelector('.popup__image');
-const popupDescriptionImage = popupImage.querySelector('.popup__image-description');
+export const popupSrcImage = popupImage.querySelector('.popup__image');
+export const popupDescriptionImage = popupImage.querySelector('.popup__image-description');
 
 
 // Открытие попапа в зависимости от кнопки
@@ -30,7 +34,6 @@ function openPopup(item) {
   document.addEventListener('keydown', closePopupByEsc);
 };
 
-//
 
 // Закрытие попапов
 
@@ -40,7 +43,6 @@ function closePopup(item) {
   document.removeEventListener('keydown', closePopupByEsc);
 };
 
-//
 
 // Закрытие попапов по esc
 
@@ -51,7 +53,6 @@ function closePopupByEsc(evt) {
   };
 };
 
-//
 
 // Закрытие попапов кликом по оверлею или крестику
 
@@ -66,7 +67,6 @@ popups.forEach((popup) => {
   });
 });
 
-//
 
 // Открытие попапа профиля
 
@@ -90,7 +90,6 @@ buttonEditProfile.addEventListener('click', function () {
   openPopup(popupProfile);
 });
 
-//
 
 // Открытие попапа добавления карточки
 
@@ -98,8 +97,6 @@ buttonAddMesto.addEventListener('click', function () {
   openPopup(popupCard);
 });
 
-
-//
 
 // Сохранение попапа редактирования профиля
 
@@ -116,96 +113,12 @@ const popupFormProfile = document.forms['profile-form'];
 
 popupFormProfile.addEventListener('submit', saveProfilePopup);
 
-//
 
-// Массив с 6-ю карточками
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-//
-
-// Добавление фотографий из готового массива
-
-const photoGridTemplate = document.querySelector('#photogrid').content;
-
-function createCard(item) {
-
-  const mestoElement = photoGridTemplate.querySelector('.photo-grid__list-item').cloneNode(true);
-  const photoGridItem = mestoElement.querySelector('.photo-grid__item');
-
-  photoGridItem.src = item.link;
-  photoGridItem.alt = item.name;
-  mestoElement.querySelector('.photo-grid__title').textContent = item.name;
-
-  // Лайк фотографии
-
-  const likeButton = mestoElement.querySelector('.photo-grid__like-photo');
-
-  function likePhoto() {
-    likeButton.classList.toggle('photo-grid__like-photo_active');
-  }
-
-  likeButton.addEventListener('click', likePhoto);
-
-  // Удаление фотографии
-
-  const deleteButton = mestoElement.querySelector('.photo-grid__delete-photo');
-
-  function deletePhoto() {
-    deleteButton.closest('.photo-grid__list-item').remove();
-  }
-
-  deleteButton.addEventListener('click', deletePhoto);
-
-  // Открытие увеличенной фотографии
-
-  const image = mestoElement.querySelector('.photo-grid__item');
-  const descriptionImage = mestoElement.querySelector('.photo-grid__title');
-
-  function openBigImage() {
-    popupSrcImage.src = image.getAttribute('src');
-    popupSrcImage.alt = descriptionImage.textContent;
-    popupDescriptionImage.textContent = descriptionImage.textContent;
-    openPopup(popupImage);
-  }
-
-  image.addEventListener('click', openBigImage);
-  //
-
-  return mestoElement;
-}
-
-//
-
-// Добавление карточки в начало
+// Добавление карточек из массива
 
 initialCards.forEach((item) => {
-  photoGridList.append(createCard(item));
+  const card = new Card(item, '#photogrid', openPopup);
+  photoGridList.append(card.createCard());
 });
 
 //
@@ -217,16 +130,14 @@ const popupFormMesto = document.forms['mesto-form'];
 popupFormMesto.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  const newCard = [
-    {
-      name: `${cardName.value}`,
-      link: `${cardLink.value}`
-    }];
+  const newCard = new Card ({
+    name: cardName.value,
+    link: cardLink.value
+  }, '#photogrid', openPopup);
 
-  photoGridList.prepend(createCard(newCard[0]));
+  photoGridList.prepend(newCard.createCard());
 
   closePopup(popupCard);
 
   e.target.reset();
 });
-
