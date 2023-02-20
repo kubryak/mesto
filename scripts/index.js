@@ -23,6 +23,7 @@ const popupName = root.querySelector('.popup__input_type_name');
 const popupDescription = root.querySelector('.popup__input_type_description');
 const popupFormProfile = document.forms['profile-form'];
 
+
 // Попап добавления карточки
 
 const popupCard = root.querySelector('.popup_type_card');
@@ -31,9 +32,11 @@ const cardName = popupCard.querySelector('.popup__input_type_img-name');
 const cardLink = popupCard.querySelector('.popup__input_type_img-link');
 const popupFormCard = document.forms['mesto-form'];
 
+
 // Темплейт карточки
 
 const photoGridList = root.querySelector('.photo-grid__list');
+
 
 // Валидация попапа профиля
 
@@ -41,11 +44,13 @@ const validatorProfile = new FormValidator(formVariables, popupProfile);
 validatorProfile.enableValidation();
 popupFormProfile.addEventListener('submit', saveProfilePopup);
 
+
 // Валидация попапа добавления карточки
 
 const validatorCard = new FormValidator(formVariables, popupCard);
 validatorCard.enableValidation();
 popupFormCard.addEventListener('submit', popupFormMesto);
+
 
 // Открытие попапа в зависимости от кнопки
 
@@ -135,7 +140,6 @@ initialCards.forEach((item) => {
   photoGridList.append(card.createCard());
 });
 
-//
 
 // Добавление новой карточки
 
