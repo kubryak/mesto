@@ -64,7 +64,6 @@ function openPopup(item) {
 
 function closePopup(item) {
   item.classList.remove('popup_opened');
-
   document.removeEventListener('keydown', closePopupByEsc);
 };
 
@@ -83,10 +82,7 @@ function closePopupByEsc(evt) {
 
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
-    if (evt.target.classList.contains('popup_opened')) {
-      closePopup(popup)
-    }
-    if (evt.target.classList.contains('popup__close-btn')) {
+    if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__close-btn')) {
       closePopup(popup)
     }
   });
@@ -99,18 +95,7 @@ buttonEditProfile.addEventListener('click', function () {
   popupName.value = profileName.textContent;
   popupDescription.value = profileDescription.textContent;
 
-  const inputs = popupProfile.querySelectorAll('.popup__input');
-  const inputsError = popupProfile.querySelectorAll('.popup__input-error');
-
-  inputs.forEach(element => {
-    element.classList.remove('popup__input_type_error');
-    element.textContent = '';
-  });
-
-  inputsError.forEach(element => {
-    element.textContent = '';
-    element.classList.remove('popup__input-error_active');
-  });
+  validatorProfile.clearProfileError();
 
   openPopup(popupProfile);
 });
@@ -119,6 +104,7 @@ buttonEditProfile.addEventListener('click', function () {
 // Открытие попапа добавления карточки
 
 buttonAddMesto.addEventListener('click', function () {
+
   openPopup(popupCard);
 });
 

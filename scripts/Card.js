@@ -8,12 +8,10 @@ export default class Card {
   }
 
   _getElement() {
-    const cardElement = document.querySelector(this._templateSelector)
+    return document.querySelector(this._templateSelector)
     .content
     .querySelector('.photo-grid__list-item')
     .cloneNode(true);
-
-    return cardElement;
   }
 
   _setLikeListeners() {
