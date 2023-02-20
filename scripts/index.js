@@ -1,31 +1,51 @@
-import {initialCards} from "./utils.js";
+import {initialCards, formVariables} from "./utils.js";
 import Card from "./Card.js";
-
+import FormValidator from "./FormValidator.js";
 
 const root = document.querySelector('.root');
-const popupProfile = root.querySelector('.popup_type_profile');
+const popups = root.querySelectorAll('.popup');
+
 export const popupImage = root.querySelector('.popup_type_image');
+export const popupSrcImage = popupImage.querySelector('.popup__image');
+export const popupDescriptionImage = popupImage.querySelector('.popup__image-description');
+
+// Профиль
+
 const buttonEditProfile = root.querySelector('.profile__edit-profile-info-btn');
 const profileName = root.querySelector('.profile__profile-name');
 const profileDescription = root.querySelector('.profile__profile-description');
 
+
+// Попап редактирования профиля
+
+const popupProfile = root.querySelector('.popup_type_profile');
 const popupName = root.querySelector('.popup__input_type_name');
 const popupDescription = root.querySelector('.popup__input_type_description');
+const popupFormProfile = document.forms['profile-form'];
+
+// Попап добавления карточки
+
+const popupCard = root.querySelector('.popup_type_card');
+const buttonAddMesto = root.querySelector('.profile__add-mesto-btn');
+const cardName = popupCard.querySelector('.popup__input_type_img-name');
+const cardLink = popupCard.querySelector('.popup__input_type_img-link');
+const popupFormCard = document.forms['mesto-form'];
+
+// Темплейт карточки
 
 const photoGridList = root.querySelector('.photo-grid__list');
 
-const popupCard = root.querySelector('.popup_type_card');
-const buttonCloseMesto = popupCard.querySelector('.popup__close-btn_type_mesto');
-const buttonAddMesto = root.querySelector('.profile__add-mesto-btn');
+// Валидация попапа профиля
 
-const popups = root.querySelectorAll('.popup');
+const validatorProfile = new FormValidator(formVariables, popupProfile);
+validatorProfile.enableValidation();
+popupFormProfile.addEventListener('submit', saveProfilePopup);
 
-const cardName = popupCard.querySelector('.popup__input_type_img-name');
-const cardLink = popupCard.querySelector('.popup__input_type_img-link');
+// Валидация попапа добавления карточки
 
-export const popupSrcImage = popupImage.querySelector('.popup__image');
-export const popupDescriptionImage = popupImage.querySelector('.popup__image-description');
-
+const validatorCard = new FormValidator(formVariables, popupCard);
+validatorCard.enableValidation();
+popupFormCard.addEventListener('submit', popupFormMesto);
 
 // Открытие попапа в зависимости от кнопки
 
@@ -100,18 +120,12 @@ buttonAddMesto.addEventListener('click', function () {
 
 // Сохранение попапа редактирования профиля
 
-const buttonSaveProfile = popupProfile.querySelector('.popup__submit-popup-btn');
-
 function saveProfilePopup(e) {
   e.preventDefault();
   profileName.textContent = `${popupName.value}`;
   profileDescription.textContent = `${popupDescription.value}`;
   closePopup(popupProfile);
 };
-
-const popupFormProfile = document.forms['profile-form'];
-
-popupFormProfile.addEventListener('submit', saveProfilePopup);
 
 
 // Добавление карточек из массива
@@ -125,9 +139,7 @@ initialCards.forEach((item) => {
 
 // Добавление новой карточки
 
-const popupFormMesto = document.forms['mesto-form'];
-
-popupFormMesto.addEventListener('submit', (e) => {
+function popupFormMesto(e) {
   e.preventDefault();
 
   const newCard = new Card ({
@@ -140,4 +152,4 @@ popupFormMesto.addEventListener('submit', (e) => {
   closePopup(popupCard);
 
   e.target.reset();
-});
+};
