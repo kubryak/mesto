@@ -75,12 +75,9 @@ export default class formValidator {
   };
 
   clearProfileError() {
-    const popupInputs = this._formElement.querySelectorAll('.popup__input');
-    popupInputs.forEach( (element) => {
-      if (element.classList.contains('popup__input_type_error')) {
+    this._inputList.forEach( (element) => {
       this._hideInputError(element);
-    }})
-
+    })
   };
 
 }
