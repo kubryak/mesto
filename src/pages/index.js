@@ -3,6 +3,7 @@ import './index.css';
 import {initialCards, formVariables} from "../utils/utils.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+import Section from '../components/Section';
 
 const root = document.querySelector('.root');
 const popups = root.querySelectorAll('.popup');
@@ -37,7 +38,7 @@ const popupFormCard = document.forms['mesto-form'];
 
 // Темплейт карточки
 
-const photoGridList = root.querySelector('.photo-grid__list');
+const photoGridList = '.photo-grid__list';
 
 
 // Валидация попапа профиля
@@ -123,10 +124,24 @@ function saveProfilePopup(e) {
 
 // Добавление карточек из массива
 
-initialCards.forEach((item) => {
-  const card = new Card(item, '#photogrid', openPopup);
-  photoGridList.append(card.createCard());
-});
+function addCard(items) {
+  const cardList = new Section({
+    data: items,
+    renderer: (item) => {
+      const card = new Card(item, '#photogrid', openPopup);
+      cardList.addItem(card.createCard());
+    }
+  }, photoGridList)
+
+  cardList.renderItem();
+}
+
+
+
+addCard(initialCards);
+
+
+
 
 
 // Добавление новой карточки
@@ -134,14 +149,12 @@ initialCards.forEach((item) => {
 function popupFormMesto(e) {
   e.preventDefault();
 
-  const newCard = new Card ({
-    name: cardName.value,
-    link: cardLink.value
-  }, '#photogrid', openPopup);
+  const cardData = [{name:cardName.value, link: cardLink.value}]
 
-  photoGridList.prepend(newCard.createCard());
-
+  addCard(cardData);
   closePopup(popupCard);
 
   e.target.reset();
 };
+
+////////////////////////////
