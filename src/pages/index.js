@@ -1,6 +1,8 @@
-import {initialCards, formVariables} from "./utils.js";
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
+import './index.css';
+
+import {initialCards, formVariables} from "../utils/utils.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 
 const root = document.querySelector('.root');
 const popups = root.querySelectorAll('.popup');
