@@ -12,6 +12,7 @@
 
 ## Ссылки на проект:
 
+* [Ссылка на проект](https://kubryak.github.io/mesto/)
 * [Проект в Figma](https://www.figma.com/file/Hc7i45Om3FY0eaGOW9cbIw/JavaScript.-Sprint-4-(Copy)?node-id=28212%3A155&t=oYlVy5KXxdiSKtAO-0)
 
 ## Авторы:
