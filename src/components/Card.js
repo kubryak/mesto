@@ -1,10 +1,8 @@
-import { popupImage, popupSrcImage, popupDescriptionImage } from "../pages/index.js";
-
 export default class Card {
-  constructor(cardData, templateSelector, openPopup) {
+  constructor(cardData, templateSelector, handleCardClick) {
     this._cardData = cardData;
     this._templateSelector = templateSelector;
-    this._openPopup = openPopup;
+    this._handleCardClick = handleCardClick;
   }
 
   _getElement() {
@@ -36,21 +34,9 @@ export default class Card {
 
   _setImageListeners() {
     this._element.querySelector('.photo-grid__item').addEventListener('click', () => {
-      this._openBigImage();
+      this._handleCardClick(this._cardData.name, this._cardData.link);
     })
   }
-
-  _openBigImage() {
-    const image = this._cardData.link;
-    const name = this._cardData.name;
-
-    popupSrcImage.src = image;
-    popupSrcImage.alt = name;
-    popupDescriptionImage.textContent = name;
-
-    this._openPopup(popupImage);
-  }
-
 
   createCard() {
     this._element = this._getElement();
