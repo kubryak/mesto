@@ -11,9 +11,6 @@ import PopupWithImage from './components/PopupWithImage';
 const root = document.querySelector('.root');
 
 import {
-  popupImage,
-  popupSrcImage,
-  popupDescriptionImage,
   buttonEditProfile,
   popupProfile,
   popupName,
