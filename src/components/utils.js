@@ -38,7 +38,7 @@ export const formVariables = ({
 
 const buttonEditProfile = document.querySelector('.profile__edit-profile-info-btn');
 const popupProfile = document.querySelector('.popup_type_profile');
-const popupName =documentt.querySelector('.popup__input_type_name');
+const popupName = document.querySelector('.popup__input_type_name');
 const popupDescription = document.querySelector('.popup__input_type_description');
 
 // Попап добавления карточки
