@@ -1,12 +1,12 @@
-import './index.css';
+import './styles/index.css';
 
-import { initialCards, formVariables } from "../utils/utils.js";
-import Card from "../components/Card.js";
-import FormValidator from "../components/FormValidator.js";
-import Section from '../components/Section';
-import PopupWithForm from '../components/PopupWithForm';
-import UserInfo from '../components/UserInfo';
-import PopupWithImage from '../components/PopupWithImage';
+import { initialCards, formVariables } from "./components/utils.js";
+import Card from "./components/Card.js";
+import FormValidator from "./components/FormValidator.js";
+import Section from './components/Section';
+import PopupWithForm from './components/PopupWithForm';
+import UserInfo from './components/UserInfo';
+import PopupWithImage from './components/PopupWithImage';
 
 const root = document.querySelector('.root');
 
@@ -21,7 +21,7 @@ import {
   popupCard,
   buttonAddMesto,
   photoGridList
-} from '../utils/utils.js';
+} from './components/utils.js';
 
 
 // Валидация попапа профиля
