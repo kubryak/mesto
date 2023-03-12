@@ -1,6 +1,7 @@
 export default class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
+
   }
 
   openPopup() {
@@ -14,7 +15,9 @@ export default class Popup {
   };
 
   _handleEscClose(evt) {
-    if (evt.key === 'Escape' || evt.key === 'Esc' || evt.keyCode === '27') {
+    const ESC_KEY_CODE = '27';
+
+    if (evt.key === 'Escape' || evt.key === 'Esc' || evt.keyCode === ESC_KEY_CODE) {
       const openedPopup = new Popup ('.popup_opened');
       openedPopup.closePopup();
     };

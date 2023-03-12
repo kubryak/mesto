@@ -11,8 +11,8 @@ export default class UserInfo {
     }
   }
 
-  setUserInfo(formList) {
-    const {name, description} = formList;
+  setUserInfo(profileData) {
+    const {name, description} = profileData;
 
     this._name.textContent = name;
     this._description.textContent = description;

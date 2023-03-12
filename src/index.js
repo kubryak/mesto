@@ -1,14 +1,12 @@
 import './styles/index.css';
 
-import { initialCards, formVariables } from "./components/utils.js";
+import { initialCards, formVariables } from "./utils/utils.js";
 import Card from "./components/Card.js";
 import FormValidator from "./components/FormValidator.js";
 import Section from './components/Section';
 import PopupWithForm from './components/PopupWithForm';
 import UserInfo from './components/UserInfo';
 import PopupWithImage from './components/PopupWithImage';
-
-const root = document.querySelector('.root');
 
 import {
   buttonEditProfile,
@@ -18,7 +16,7 @@ import {
   popupCard,
   buttonAddMesto,
   photoGridList
-} from './components/utils.js';
+} from './utils/utils.js';
 
 
 // Валидация попапа профиля
@@ -47,8 +45,8 @@ buttonEditProfile.addEventListener('click', () => {
 
 const popupEditProfile = new PopupWithForm({
   popupSelector: '.popup_type_profile',
-  callbackFormSubmit: (formList) => {
-    userInfo.setUserInfo(formList);
+  callbackFormSubmit: (profileData) => {
+    userInfo.setUserInfo(profileData);
 
     popupEditProfile.closePopup();
   }
@@ -74,23 +72,23 @@ const popupAddCard = new PopupWithForm({
 popupAddCard.setEventListeners();
 
 
-// Функция открытия попапа изображения
+// Открытие попапа изображения
+
+const popup = new PopupWithImage('.popup_type_image');
+popup.setEventListeners();
 
 function handleCardClick(name, link) {
-  const popup = new PopupWithImage('.popup_type_image', name, link);
-  popup.openPopup();
-  popup.setEventListeners();
+  popup.openPopup(name, link);
 }
 
 
 // Добавление всех карточек
 
 const cardList = new Section({
-  data: initialCards,
   renderer: (item) => {
     const card = new Card(item, '#photogrid', handleCardClick);
     cardList.setItem(card.createCard());
   }
 }, photoGridList)
 
-cardList.renderItem();
+cardList.renderItems(initialCards);

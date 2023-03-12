@@ -1,4 +1,4 @@
-export default class formValidator {
+export default class FormValidator {
   constructor (variables, formElement) {
     this._inputSelector = variables.inputSelector;
     this._submitButtonSelector = variables.submitButtonSelector;
@@ -81,10 +81,3 @@ export default class formValidator {
   };
 
 }
-
-
-
-
-
-
-

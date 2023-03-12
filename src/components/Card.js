@@ -13,13 +13,14 @@ export default class Card {
   }
 
   _setLikeListeners() {
-    this._element.querySelector('.photo-grid__like-photo').addEventListener('click', () => {
+    this._likeBtn.addEventListener('click', () => {
       this._likePhoto();
+      console.log
     })
   }
 
   _likePhoto() {
-    this._element.querySelector('.photo-grid__like-photo').classList.toggle('photo-grid__like-photo_active');
+    this._likeBtn.classList.toggle('photo-grid__like-photo_active');
   }
 
   _setDeleteListeners() {
@@ -30,7 +31,8 @@ export default class Card {
 
   _deletePhoto() {
     this._element.remove();
-  }
+    this._element = null;
+    }
 
   _setImageListeners() {
     this._element.querySelector('.photo-grid__item').addEventListener('click', () => {
@@ -40,6 +42,7 @@ export default class Card {
 
   createCard() {
     this._element = this._getElement();
+    this._likeBtn = this._element.querySelector('.photo-grid__like-photo');
 
     const image = this._element.querySelector('.photo-grid__item');
 
