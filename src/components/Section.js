@@ -9,11 +9,8 @@ export default class Section {
   }
 
   addItem(element) {
-    console.log(element)
     this._renderer(element);
   }
-
-
 
   renderItems(data) {
     data.forEach( (item) => {
@@ -22,6 +19,3 @@ export default class Section {
   }
 
 }
-
-
-

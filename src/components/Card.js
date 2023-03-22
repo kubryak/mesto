@@ -95,7 +95,6 @@ export default class Card {
     this._toggleLikesCounter();
 
     return this._element;
-
   }
 
 }

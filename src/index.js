@@ -65,7 +65,7 @@ validatorAvatar.enableValidation();
 // Открытие попапа редактирования аватара
 
 buttonEditAvatar.addEventListener('click', () => {
-  popupEditAvatar.openPopup();
+  popupEditAvatar.open();
   validatorAvatar.clearError();
 });
 
@@ -76,7 +76,7 @@ const popupEditAvatar = new PopupWithForm({
     api.setNewAvatar({ avatar: avatarLink.link })
       .then((res) => {
         userInfo.setUserAvatar(res.avatar);
-        popupEditAvatar.closePopup();
+        popupEditAvatar.close();
       })
       .catch((err) => {
         console.log(err);
@@ -95,7 +95,7 @@ popupEditAvatar.setEventListeners();
 const userInfo = new UserInfo({ selectorName: '.profile__profile-name', selectorDescription: '.profile__profile-description', selectorAvatar: '.profile__avatar' });
 
 buttonEditProfile.addEventListener('click', () => {
-  popupEditProfile.openPopup();
+  popupEditProfile.open();
   const { name, about } = userInfo.getUserInfo()
   popupName.value = name;
   popupDescription.value = about;
@@ -109,7 +109,7 @@ const popupEditProfile = new PopupWithForm({
     api.setUserInfo({ name: profileData.name, about: profileData.description })
       .then((res) => {
         userInfo.setUserInfo({ userName: res.name, userAbout: res.about });
-        popupEditProfile.closePopup();
+        popupEditProfile.close();
       })
       .catch((err) => {
         console.log(err);
@@ -126,7 +126,8 @@ popupEditProfile.setEventListeners();
 // Открытие попапа добавления карточки
 
 buttonAddMesto.addEventListener('click', () => {
-  popupAddCard.openPopup();
+  popupAddCard.open();
+  validatorCard.clearError();
 });
 
 const popupAddCard = new PopupWithForm({
@@ -136,7 +137,7 @@ const popupAddCard = new PopupWithForm({
     api.addNewCard(formList)
       .then((res) => {
         cardList.addItem(res);
-        popupAddCard.closePopup();
+        popupAddCard.close();
       })
       .catch((err) => {
         console.log(err);
@@ -156,7 +157,7 @@ const popupImage = new PopupWithImage('.popup_type_image');
 popupImage.setEventListeners();
 
 function handleCardClick(name, link) {
-  popupImage.openPopup(name, link);
+  popupImage.open(name, link);
 }
 
 
@@ -195,12 +196,12 @@ const cardList = new Section({
       handleDeleteButton: (event) => {
         const cardElement = event.target.closest('.photo-grid__list-item');
         const cardId = card.getCardId();
-        popupDeleteCard.openPopup();
+        popupDeleteCard.open();
         popupDeleteCard.setNewHandler(() => {
           api.deleteCard(cardId)
             .then(() => {
               cardElement.remove();
-              popupDeleteCard.closePopup();
+              popupDeleteCard.close();
             })
             .catch((err) => {
               console.log(err);

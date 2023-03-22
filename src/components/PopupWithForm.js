@@ -26,8 +26,8 @@ export default class PopupWithForm extends Popup {
     });
   }
 
-  closePopup() {
-    super.closePopup();
+  close() {
+    super.close();
     this._form.reset();
   }
 
@@ -36,6 +36,7 @@ export default class PopupWithForm extends Popup {
       this._submitButton.textContent = 'Сохранение...';
     } else {
       this._submitButton.textContent = 'Сохранить';
+
     }
   }
 
