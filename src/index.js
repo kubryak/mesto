@@ -108,7 +108,7 @@ const popupEditProfile = new PopupWithForm({
     popupEditProfile.renderLoading(true);
     api.setUserInfo({ name: profileData.name, about: profileData.description })
       .then((res) => {
-        userInfo.setUserInfo({ userName: res.name, userAbout: res.about });
+        userInfo.setUserInfo({ userName: res.name, userAbout: res.about, userId: res._id });
         popupEditProfile.close();
       })
       .catch((err) => {
