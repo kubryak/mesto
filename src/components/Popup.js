@@ -18,7 +18,7 @@ export default class Popup {
     const ESC_KEY_CODE = '27';
 
     if (evt.key === 'Escape' || evt.key === 'Esc' || evt.keyCode === ESC_KEY_CODE) {
-      const openedPopup = new Popup ('.popup_opened');
+      const openedPopup = new Popup('.popup_opened');
       openedPopup.closePopup();
     };
   };

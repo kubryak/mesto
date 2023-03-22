@@ -9,6 +9,7 @@ export default class Section {
   }
 
   addItem(element) {
+    console.log(element)
     this._renderer(element);
   }
 

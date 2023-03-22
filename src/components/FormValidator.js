@@ -74,7 +74,7 @@ export default class FormValidator {
       });
   };
 
-  clearProfileError() {
+  clearError() {
     this._inputList.forEach( (element) => {
       this._hideInputError(element);
     })

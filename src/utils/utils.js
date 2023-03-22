@@ -33,6 +33,11 @@ export const formVariables = ({
   errorClass: 'popup__input-error_active'
 });
 
+// Попап редактирования аватара
+
+const popupAvatar = document.querySelector('.popup_type_avatar');
+const buttonEditAvatar = document.querySelector('.profile__avatar-btn');
+
 
 // Попап редактирования профиля
 
@@ -46,6 +51,7 @@ const popupDescription = document.querySelector('.popup__input_type_description'
 const popupCard = document.querySelector('.popup_type_card');
 const buttonAddMesto = document.querySelector('.profile__add-mesto-btn');
 
+
 // Темплейт карточки
 
 const photoGridList = '.photo-grid__list';
@@ -57,5 +63,7 @@ export {
   popupDescription,
   popupCard,
   buttonAddMesto,
-  photoGridList
+  photoGridList,
+  popupAvatar,
+  buttonEditAvatar,
 }
